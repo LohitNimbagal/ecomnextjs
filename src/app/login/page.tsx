@@ -15,8 +15,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import axios from "axios"
+// import { useRouter } from "next/navigation"
+// import axios from "axios"
 
 const formSchema = z.object({
     email: z.string().email(), // Ensure the email is in a valid email format
@@ -24,27 +24,29 @@ const formSchema = z.object({
 })
 
 
-export default function page() {
+export default function Page() {
 
-    const router = useRouter()
+    // const router = useRouter()
 
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            email: "",
-            password: "",
+          email: "",
+          password: "",
         },
-    })
+      })
 
     // 2. Define a submit handler.
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        try {
-            const response = await axios.post("api/users/login", values)
-            router.push("/")
-        } catch (error: any) {
-            console.log(error.message);
-        }
+        // try {
+        //     const response = await axios.post("api/users/login", values)
+        //     router.push("/")
+        // } catch (error: any) {
+        //     console.log(error.message);
+        // }
+        console.log(values);
+        
     }
 
     return (

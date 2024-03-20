@@ -2,13 +2,16 @@
 
 import { z } from "zod"
 import React from 'react'
-import axios from "axios"
-import { useEffect, useState } from "react";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { Checkbox } from "@/components/ui/checkbox"
-import { PaginationSection } from "@/components/PaginationSection";
+// import axios from "axios"
+// import { useEffect, useState } from "react";
+import { Card, 
+  // CardContent, 
+  // CardFooter,
+   CardHeader, CardTitle } from '@/components/ui/card'
+// import { zodResolver } from "@hookform/resolvers/zod"
+// import { useForm } from "react-hook-form"
+// import { Checkbox } from "@/components/ui/checkbox"
+// import { PaginationSection } from "@/components/PaginationSection";
 
 
 const formSchema = z.object({
@@ -16,49 +19,49 @@ const formSchema = z.object({
   password: z.string().min(8), // Ensure the password is at least 8 characters long
 })
 
-interface Category {
-  id: number;
-  name: string;
-  _id: string;
-  // Add other properties if present
-}
+// interface Category {
+//   id: number;
+//   name: string;
+//   _id: string;
+//   // Add other properties if present
+// }
 
-interface ResponseData {
-  message: string;
-  totalPages: number;
-  pageNumber: number,
-  categories: Category[];
-  // Add other properties if present
-}
+// interface ResponseData {
+//   message: string;
+//   totalPages: number;
+//   pageNumber: number,
+//   categories: Category[];
+//   // Add other properties if present
+// }
 
 
 export default function HomePage() {
 
-  const [categories, setCategories] = useState([])
-  const [pageNumber, setPageNumber] = useState<number>(1)
-  const [data, setData] = useState<ResponseData>()
+  // const [categories, setCategories] = useState([])
+  // const [pageNumber, setPageNumber] = useState<number>(1)
+  // const [data, setData] = useState<ResponseData>()
 
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const response = await axios.post("api/users/category/all", { pageNumber: pageNumber })
-        console.log(response.data);
-        setData(response.data);
-        setCategories(response.data.categories)
-      } catch (error: any) {
-        console.log(error.message);
-      }
-    }
-    getCategories()
-  }, [pageNumber])
+  // useEffect(() => {
+  //   const getCategories = async () => {
+  //     try {
+  //       const response = await axios.post("api/users/category/all", { pageNumber: pageNumber })
+  //       console.log(response.data);
+  //       setData(response.data);
+  //       setCategories(response.data.categories)
+  //     } catch (error: any) {
+  //       console.log(error.message);
+  //     }
+  //   }
+  //   getCategories()
+  // }, [pageNumber])
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  })
+  // const form = useForm<z.infer<typeof formSchema>>({
+  //   resolver: zodResolver(formSchema),
+  //   defaultValues: {
+  //     email: "",
+  //     password: "",
+  //   },
+  // })
 
   return (
     <>
@@ -69,7 +72,7 @@ export default function HomePage() {
 
             <p>We will keep you notified.</p>
           </CardHeader>
-
+{/* 
           {data
             ?
             <>
@@ -101,7 +104,7 @@ export default function HomePage() {
             </>
             :
             <h2 className="text-center">Getting you Cat....</h2>
-          }
+          }  */}
         </Card>
       </div >
     </>

@@ -16,8 +16,8 @@ export const Header = () => {
         try {
             await axios.get('api/users/logout')
             router.push("/")
-        } catch (error: any) {
-            console.log(error.message);
+        } catch (error) {
+            console.log(error);
         }
     }
 
